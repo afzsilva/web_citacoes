@@ -1,0 +1,1 @@
+web: gunicorn web_citacoes.wsgi --log-file -
