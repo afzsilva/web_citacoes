@@ -46,8 +46,14 @@
 
 </form>
 </div>
-
-<!--<p>dado : {{dados_banco}}</p>-->
+<hr>
+<ul>
+    {%for i in dados_banco %}
+    <li>
+        <b>{{i.nome_autor}}</b> - {{i.citacao}}
+    </li>
+    {% endfor %}
+</ul>
 
 
 </body>

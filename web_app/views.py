@@ -6,10 +6,9 @@ from .models import ScrapData
 
 # Create your views here.
 
-
 def buscar_dados(request):
-    dados_banco = ScrapData.objects.all()
-    return render(request,"index.html",{'dados_banco':dados_banco})
+    return render(request,"index.html")
+
 
 def obter_dados_post(request):
     site_url = request.POST['urlscrap']
@@ -37,22 +36,20 @@ def obter_dados_scrap(url):
     salvar(autores_tratados, citacoes_tratadas)
 
 
-"""
-def mostrar_conteudo(lista):
-    for item in lista:
-        print(item.text)
-"""
 
 def salvar_um_scrapping(autor,citacao):
-
     dados = ScrapData(nome_autor=autor, citacao=citacao)
     dados.save()
 
+
+
 def salvar(lista_autores, lista_citacao):
-    limpar_dados()
+    limpar_dados() # Limpar os registros atuais no banco antes de salvar novo scrapping
     for a,c in zip(lista_autores, lista_citacao):
         salvar_um_scrapping(a,c)
     print("Salvo com sucesso")
+
+
 
 
 def limpar_dados():

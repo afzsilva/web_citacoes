@@ -25,11 +25,11 @@ SECRET_KEY = 'django-insecure-!n6lc81vj1mq=&m95x9nqsqgb2an91+9qkf!d2sc@#57eh_%u7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','autoresscrapp.herokuapp.com']
+#ALLOWED_HOSTS = ['127.0.0.1','autoresscrapp.herokuapp.com']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'rest_framework',
     'web_app',
     'api',
-    'corsheaders',
-    # 'rest_framework',
 ]
 
 # REST_FRAMEWORK = {
@@ -49,24 +49,18 @@ INSTALLED_APPS = [
 #     ]
 # }
 
-MIDDLEWARE_CLASSES = (
-
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
-
-)
-CORS_ALLOW_ALL_ORIGINS = True
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'web_citacoes.urls'
 
@@ -87,6 +81,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'web_citacoes.wsgi.application'
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Database
